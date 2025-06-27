@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type Props = {
   label: string;
@@ -9,7 +9,14 @@ type Props = {
   required?: boolean;
 };
 
-const InputField: React.FC<Props> = ({ label, type, value, name, onChange, required }) => (
+const InputField: React.FC<Props> = ({
+  label,
+  type,
+  value,
+  name,
+  onChange,
+  required,
+}) => (
   <div className="input-field">
     <label>{label}</label>
     <input
@@ -23,4 +30,4 @@ const InputField: React.FC<Props> = ({ label, type, value, name, onChange, requi
   </div>
 );
 
-export default InputField; 
+export default InputField;

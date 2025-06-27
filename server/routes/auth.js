@@ -44,7 +44,7 @@ router.post('/register', async (req, res) => {
     );
     // Установка cookie
     res.cookie('token', token, { httpOnly: true, sameSite: 'lax' });
-    res.status(201).json({ message: 'Регистрация успешна', user: { id: user._id, nickname: user.nickname, role: user.role, token } });
+    res.status(201).json({ message: 'Регистрация успешна', user: { id: user._id, _id: user._id, nickname: user.nickname, role: user.role, token } });
   } catch (err) {
     res.status(500).json({ message: 'Ошибка сервера' });
   }
@@ -68,7 +68,7 @@ router.post('/login', async (req, res) => {
       { expiresIn: '7d' }
     );
     res.cookie('token', token, { httpOnly: true, sameSite: 'lax' });
-    res.json({ message: 'Вход успешен', user: { id: user._id, nickname: user.nickname, role: user.role, token } });
+    res.json({ message: 'Вход успешен', user: { id: user._id, _id: user._id, nickname: user.nickname, role: user.role, token } });
   } catch (err) {
     res.status(500).json({ message: 'Ошибка сервера' });
   }

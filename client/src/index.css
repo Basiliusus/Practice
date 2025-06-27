@@ -267,7 +267,8 @@ button[type="submit"]:hover, .main-btn:hover, .action-btn:hover {
 .modal-overlay {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(40, 40, 80, 0.25);
+  background: rgba(40, 40, 80, 0.35);
+  backdrop-filter: blur(2px);
   z-index: 1000;
   display: flex;
   align-items: center;

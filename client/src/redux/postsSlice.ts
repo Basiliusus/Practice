@@ -2,11 +2,19 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+export type PostAuthor = {
+  _id: string;
+  nickname: string;
+  avatar?: string;
+  firstName?: string;
+  lastName?: string;
+};
+
 export type Post = {
   id: string;
   title: string;
   content: string;
-  author: { nickname: string; _id: string } | string;
+  author: PostAuthor | string;
   type: 'Контент' | 'Событие' | 'Вакансия';
   direction: string;
   likes: number;

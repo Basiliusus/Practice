@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
     if (type) filter.type = type;
     if (direction) filter.direction = direction;
     const posts = await Post.find(filter)
-      .populate('author', 'nickname')
+      .populate('author', 'nickname avatar firstName lastName')
       .sort({ createdAt: -1 });
     res.json(posts);
   } catch (err) {
@@ -55,7 +55,7 @@ router.post('/', requireAuth, async (req, res) => {
       previewImage,
       author: req.user.id
     });
-    await post.populate('author', 'nickname');
+    await post.populate('author', 'nickname avatar firstName lastName');
     res.status(201).json(post);
   } catch (err) {
     res.status(500).json({ message: 'Ошибка сервера' });
@@ -86,7 +86,7 @@ router.put('/:id', requireAuth, async (req, res) => {
     post.direction = direction;
     post.previewImage = previewImage;
     await post.save();
-    await post.populate('author', 'nickname');
+    await post.populate('author', 'nickname avatar firstName lastName');
     res.json(post);
   } catch (err) {
     res.status(500).json({ message: 'Ошибка сервера' });

@@ -18,6 +18,18 @@ const UserSchema = new mongoose.Schema({
     ], 
     required: true 
   },
+  description: { type: String },
+  workplace: { type: String },
+  avatar: { type: String },
+  portfolio: [
+    {
+      _id: { type: mongoose.Schema.Types.ObjectId, auto: true },
+      title: { type: String, required: true },
+      description: { type: String },
+      links: [{ type: String }],
+      previewImage: { type: String },
+    }
+  ]
 });
 
 module.exports = mongoose.model('User', UserSchema); 

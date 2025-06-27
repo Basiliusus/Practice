@@ -5,6 +5,9 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const postsRoutes = require('./routes/posts');
+const usersRoutes = require('./routes/users');
+const responsesRoutes = require('./routes/responses');
+const path = require('path');
 
 const app = express();
 
@@ -16,10 +19,13 @@ app.use(cors({
 }));
 
 app.use('/api', authRoutes);
+app.use('/api/users', usersRoutes);
 app.use('/api/posts', postsRoutes);
+app.use('/api/responses', responsesRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
-    app.listen(5000, () => console.log('Server started on port 5000'));
+    app.listen(5000);
   })
-  .catch(err => console.log(err)); 
+  .catch(() => {}); 

@@ -94,7 +94,7 @@ const PostForm: React.FC<PostFormProps> = ({ initialData, onClose }) => {
   };
 
   return (
-    <form className="post-form" onSubmit={handleSubmit}>
+    <form className="post-form" onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
       <h2>{initialData ? 'Редактировать пост' : 'Создать пост'}</h2>
       {error && <div className="error-message">{error}</div>}
       <input

@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const roles = [
-  'Frontend Developer',
-  'Backend Developer',
-  'QA Engineer',
-  'Designer',
-  'Manager',
-  'HR'
+  "Frontend Developer",
+  "Backend Developer",
+  "QA Engineer",
+  "Designer",
+  "Manager",
+  "HR",
 ];
 
 type Props = {
@@ -20,11 +20,13 @@ const RoleSelector: React.FC<Props> = ({ value, name, onChange }) => (
     <label>Роль</label>
     <select value={value} name={name} onChange={onChange} required>
       <option value="">Выберите роль</option>
-      {roles.map(role => (
-        <option key={role} value={role}>{role}</option>
+      {roles.map((role) => (
+        <option key={role} value={role}>
+          {role}
+        </option>
       ))}
     </select>
   </div>
 );
 
-export default RoleSelector; 
+export default RoleSelector;
